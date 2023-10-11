@@ -1,0 +1,33 @@
+version: '3'
+services:
+  db:
+    container_name: ustora_db
+    image: mysql:8
+    volumes:
+      - 'ustora-mysql:/var/lib/mysql'
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=ustora
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+  web:
+    container_name: ustora_wed
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    environment:
+      - MYSQL_DATABASE=your-db-name
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=password
+      - MYSQL_HOST=db
+    depends_on:
+      - db
+networks:
+    ustora:
+        driver: bridge
+volumes:
+    ustora-mysql:
+        driver: local

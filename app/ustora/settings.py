@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'ustora',
         'USER': 'user',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': '172.31.0.2',
         'PORT': '3306',
     }
 }

@@ -10,6 +10,8 @@ services:
       - MYSQL_DATABASE=ustora
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
+    networks:
+        - ustora
   web:
     container_name: ustora_wed
     build: .
@@ -19,15 +21,17 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - MYSQL_DATABASE=your-db-name
+      - MYSQL_DATABASE=ustora
       - MYSQL_USER=user
       - MYSQL_PASSWORD=password
       - MYSQL_HOST=db
     depends_on:
       - db
+    networks:
+        - ustora
 networks:
-    ustora:
-        driver: bridge
+  ustora:
+      driver: bridge
 volumes:
-    ustora-mysql:
-        driver: local
+  ustora-mysql:
+      driver: local

@@ -79,10 +79,13 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'ustora',
-        'USER': 'user',
-        'PASSWORD': 'password',
-        'HOST': '172.31.0.2',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'HOST': 'ustora_db',
         'PORT': '3306',
+        'TEST': {
+            'NAME': 'ustora_test',
+        },
     }
 }
 

@@ -16,3 +16,6 @@ class ViewedProduct(models.Model):
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     product_id = models.ForeignKey(Product, on_delete=models.CASCADE)
     view_time = models.DateTimeField()
+    
+    def  __str__(self):
+        return self.product_id.title

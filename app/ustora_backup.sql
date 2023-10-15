@@ -207,7 +207,7 @@ CREATE TABLE `django_admin_log` (
   CONSTRAINT `django_admin_log_content_type_id_c4bce8eb_fk_django_co` FOREIGN KEY (`content_type_id`) REFERENCES `django_content_type` (`id`),
   CONSTRAINT `django_admin_log_user_id_c564eba6_fk_auth_user_id` FOREIGN KEY (`user_id`) REFERENCES `auth_user` (`id`),
   CONSTRAINT `django_admin_log_chk_1` CHECK ((`action_flag` >= 0))
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +216,7 @@ CREATE TABLE `django_admin_log` (
 
 LOCK TABLES `django_admin_log` WRITE;
 /*!40000 ALTER TABLE `django_admin_log` DISABLE KEYS */;
-INSERT INTO `django_admin_log` VALUES (1,'2023-10-14 12:59:54.198700','1','slide 1',1,'[{\"added\": {}}]',7,1),(2,'2023-10-14 13:02:05.961740','1','slide 1',3,'',7,1),(3,'2023-10-14 13:02:24.023865','2','gia nhi',1,'[{\"added\": {}}]',7,1),(4,'2023-10-14 13:02:40.241013','3','momy',1,'[{\"added\": {}}]',7,1),(5,'2023-10-14 13:04:20.688278','4','gia kiet',1,'[{\"added\": {}}]',7,1),(6,'2023-10-14 13:05:21.822466','4','gia kiet',3,'',7,1),(7,'2023-10-14 13:05:21.855425','3','momy',3,'',7,1),(8,'2023-10-14 13:05:21.891194','2','gia nhi',3,'',7,1),(9,'2023-10-14 13:15:05.105459','1','iphone15',1,'[{\"added\": {}}]',8,1),(10,'2023-10-14 13:15:54.565707','2','iphone6',1,'[{\"added\": {}}]',8,1),(11,'2023-10-14 13:20:07.689833','5','slide 1',1,'[{\"added\": {}}]',7,1),(12,'2023-10-14 13:20:22.133539','6','slide 2',1,'[{\"added\": {}}]',7,1),(13,'2023-10-15 13:03:14.847306','1','ViewedProduct object (1)',1,'[{\"added\": {}}]',9,1);
+INSERT INTO `django_admin_log` VALUES (1,'2023-10-14 12:59:54.198700','1','slide 1',1,'[{\"added\": {}}]',7,1),(2,'2023-10-14 13:02:05.961740','1','slide 1',3,'',7,1),(3,'2023-10-14 13:02:24.023865','2','gia nhi',1,'[{\"added\": {}}]',7,1),(4,'2023-10-14 13:02:40.241013','3','momy',1,'[{\"added\": {}}]',7,1),(5,'2023-10-14 13:04:20.688278','4','gia kiet',1,'[{\"added\": {}}]',7,1),(6,'2023-10-14 13:05:21.822466','4','gia kiet',3,'',7,1),(7,'2023-10-14 13:05:21.855425','3','momy',3,'',7,1),(8,'2023-10-14 13:05:21.891194','2','gia nhi',3,'',7,1),(9,'2023-10-14 13:15:05.105459','1','iphone15',1,'[{\"added\": {}}]',8,1),(10,'2023-10-14 13:15:54.565707','2','iphone6',1,'[{\"added\": {}}]',8,1),(11,'2023-10-14 13:20:07.689833','5','slide 1',1,'[{\"added\": {}}]',7,1),(12,'2023-10-14 13:20:22.133539','6','slide 2',1,'[{\"added\": {}}]',7,1),(13,'2023-10-15 13:03:14.847306','1','ViewedProduct object (1)',1,'[{\"added\": {}}]',9,1),(14,'2023-10-15 13:56:03.176840','7','slide 3',1,'[{\"added\": {}}]',7,1),(15,'2023-10-15 13:56:17.356848','8','slide 4',1,'[{\"added\": {}}]',7,1),(16,'2023-10-15 13:56:48.766748','9','slide 5',1,'[{\"added\": {}}]',7,1),(17,'2023-10-15 13:57:39.637235','3','samsum s8',1,'[{\"added\": {}}]',8,1);
 /*!40000 ALTER TABLE `django_admin_log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -314,7 +314,7 @@ CREATE TABLE `product_product` (
   `sold_count` int NOT NULL,
   `added_time` datetime(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -323,7 +323,7 @@ CREATE TABLE `product_product` (
 
 LOCK TABLES `product_product` WRITE;
 /*!40000 ALTER TABLE `product_product` DISABLE KEYS */;
-INSERT INTO `product_product` VALUES (1,'iphone15','asset/images/products/product-1.jpg',1500.00,1000.00,10,'2023-10-14 13:15:05.099090'),(2,'iphone6','asset/images/products/product-2.jpg',800.00,800.00,2,'2023-10-14 13:15:54.562754');
+INSERT INTO `product_product` VALUES (1,'iphone15','asset/images/products/product-1.jpg',1500.00,1000.00,10,'2023-10-14 13:15:05.099090'),(2,'iphone6','asset/images/products/product-2.jpg',800.00,800.00,2,'2023-10-14 13:15:54.562754'),(3,'samsum s8','asset/images/products/product-4.jpg',2000.00,1800.00,45,'2023-10-15 13:57:39.634942');
 /*!40000 ALTER TABLE `product_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,7 +370,7 @@ CREATE TABLE `slider_slider` (
   `url` varchar(100) NOT NULL,
   `sub_title` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -379,7 +379,7 @@ CREATE TABLE `slider_slider` (
 
 LOCK TABLES `slider_slider` WRITE;
 /*!40000 ALTER TABLE `slider_slider` DISABLE KEYS */;
-INSERT INTO `slider_slider` VALUES (5,'slide 1','asset/images/sliders/h4-slide.png','sub title 1'),(6,'slide 2','asset/images/sliders/h4-slide2.png','sub title 2');
+INSERT INTO `slider_slider` VALUES (5,'slide 1','asset/images/sliders/h4-slide.png','sub title 1'),(6,'slide 2','asset/images/sliders/h4-slide2.png','sub title 2'),(7,'slide 3','asset/images/sliders/h4-slide3.png','sub title 3'),(8,'slide 4','asset/images/sliders/h4-slide4.png','sub title 4'),(9,'slide 5','asset/images/sliders/h4-slide7.png','sub title 5');
 /*!40000 ALTER TABLE `slider_slider` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -392,4 +392,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-15 13:55:15
+-- Dump completed on 2023-10-15 14:24:09

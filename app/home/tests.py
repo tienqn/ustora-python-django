@@ -1,7 +1,6 @@
 from django.test import TestCase
 from slider.models import Slider
-from product.models import Product
-from product.models import ViewedProduct
+from product.models import Product,ViewedProduct,ProductImage
 from django.contrib.auth import get_user_model
 import datetime
 import pytz
@@ -96,4 +95,21 @@ class CartTest(TestCase):
         self.assertEqual(cart[self.product01_id]['product']['title'], self.product01.title)
         self.assertEqual(cart[self.product02_id]['product']['title'], self.product02.title)
         self.assertEqual(len(cart), 2)
+
+class ProductDetailTest(TestCase):
+    def setUp(self):
+        self.product = Product.objects.create(title='Samsung gallaxy note 4', img='img/product-6.jpg', origil_price=400, sell_price=400, sold_count=10)
+        for i in range(1, 4):
+            ProductImage.objects.create(
+                product=self.product,
+                image=f'example_image_{i}.jpg'
+            )
+            
+    def test_can_access_detail_page(self):
+        response = self.client.get(reverse('product_detail_page', args=[self.product.id]))
+        self.assertTemplateUsed('product/detail.html')
+        self.assertEqual(response.context['product'].title, self.product.title)
+        self.assertEqual(len(response.context['product_images']), 3)
+        self.assertEqual(response.status_code, 200)
+
         

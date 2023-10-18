@@ -9,7 +9,7 @@ class ProductDetailPage(TemplateView):
         context = super().get_context_data(**kwargs)
         product_id = self.kwargs.get('product_id')
         product = Product.objects.get(pk=product_id)
-        product_images = ProductImage.objects.filter(product_id=product_id)
+        product_images = ProductImage.objects.filter(product_id=product_id).order_by('-id')
         context["product"] = product
         context["product_images"] = product_images
         return context

@@ -10,6 +10,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('added_time',)
 
     def display_image(self, obj):
-        return mark_safe(f'<img src="{obj.img}" width="50" height="50" />')
+
+        return mark_safe(f'<img src="#" width="50" height="50" />')
 
     display_image.short_description = 'Image'

@@ -12,7 +12,6 @@ class Cart:
         product_item['product'] = {
             'id': product.id,
             'title': product.title,
-            'img': str(product.img),
             'origil_price': str(product.origil_price),
             'sell_price': str(product.sell_price),
             'added_time': str(product.added_time),

@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 
 class Product(models.Model):
     title = models.TextField(max_length=100)
-    img = models.ImageField(upload_to='asset/images/products')
     origil_price = models.DecimalField(max_digits=10, decimal_places=2)
     sell_price = models.DecimalField(max_digits=10, decimal_places=2)
     sold_count = models.IntegerField(default=0)
@@ -23,6 +22,7 @@ class ViewedProduct(models.Model):
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     image = models.ImageField(upload_to='asset/images/products')
+    is_main_image = models.BooleanField(default=False)
 
     def __str__(self):
         return f"Image for {self.product.title}"

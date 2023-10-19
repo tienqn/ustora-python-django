@@ -1,6 +1,7 @@
 from django.views.generic.base import TemplateView
-
-from .models import Product, ProductImage
+from .models import Product, ProductImage, ProductTag
+from post.models import Post
+import random
 
 class ProductDetailPage(TemplateView):
     template_name = "product/detail.html"
@@ -10,6 +11,20 @@ class ProductDetailPage(TemplateView):
         product_id = self.kwargs.get('product_id')
         product = Product.objects.get(pk=product_id)
         product_images = ProductImage.objects.filter(product_id=product_id).order_by('-id')
+
+        product_tags_query = ProductTag.objects.filter(product=product)
+        product_tags = [product_tag.tag for product_tag in product_tags_query]
+
+        related_products = Product.objects.filter(category=product.category).exclude(id=product.id)
+
+        all_products = Product.objects.all().exclude(id=product.id)
+        random_products = random.sample(list(all_products), 4)
+        recent_posts = Post.objects.all().order_by('-id')[:4]
         context["product"] = product
         context["product_images"] = product_images
+        context["product_tags"] = product_tags
+        context["related_products"] = related_products
+        context["random_products"] = random_products
+        context["recent_posts"] = recent_posts
+
         return context

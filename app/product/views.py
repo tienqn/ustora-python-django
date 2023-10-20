@@ -1,6 +1,7 @@
 from django.views.generic.base import TemplateView
 from .models import Product, ProductImage, ProductTag
 from post.models import Post
+from django.http import JsonResponse
 import random
 
 class ProductDetailPage(TemplateView):
@@ -28,3 +29,8 @@ class ProductDetailPage(TemplateView):
         context["recent_posts"] = recent_posts
 
         return context
+
+def search_product(request):
+    print(request)
+    return JsonResponse({'status':'success'})
+

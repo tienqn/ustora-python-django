@@ -189,4 +189,12 @@ class ProductDetailTest(TestCase):
         self.assertEqual(len(response.context['random_products']), 4)
         self.assertEqual(len(response.context['recent_posts']), 4)
         self.assertEqual(response.status_code, 200)
+
+    def test_can_search_product(self):
+        query = 'gallaxy'
+        response = self.client.get('/product/search?q=' + query)
+        self.assertEqual(response.status_code, 200)
+
+
+
         

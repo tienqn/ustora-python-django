@@ -31,6 +31,13 @@ class ProductDetailPage(TemplateView):
         return context
 
 def search_product(request):
-    print(request)
-    return JsonResponse({'status':'success'})
+    search_term = request.GET['q']
+    filtered_products = Product.objects.filter(title__icontains=search_term)
+    res = []
+    for product in filtered_products:
+        res.append({
+            'id': product.id,
+            'name': product.title,
+        })
+    return JsonResponse({'products':res})
 

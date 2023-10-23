@@ -1,6 +1,8 @@
 from django.views.generic.base import TemplateView
 from slider.models import Slider
 from product.models import Product, ViewedProduct, ProductImage
+from django.http import HttpResponse, HttpResponseBadRequest
+import re
 
 
 class HomePageView(TemplateView):
@@ -38,3 +40,22 @@ class HomePageView(TemplateView):
         context["recently_viewed"] = recently_viewed
         context["top_new"] = top_new
         return context
+
+
+def is_valid_email(email):
+    email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+    if re.match(email_pattern, email):
+        return True
+    else:
+        return False
+    
+def subcribe(request):
+
+    data = request.POST
+    email = data['email']
+
+    if is_valid_email(email) == False:
+
+        return HttpResponseBadRequest('Email wrong!')
+    
+    return HttpResponse()

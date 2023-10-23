@@ -194,7 +194,33 @@ class ProductDetailTest(TestCase):
         query = 'gallaxy'
         response = self.client.get('/product/search?q=' + query)
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(response["content-type"], "application/json")
 
+        expected_data = {
+            'products': [
+                {'id': self.product.id, 'name': self.product.title},
+                {'id': self.product02.id, 'name': self.product02.title},
+                {'id': self.product03.id, 'name': self.product03.title},
+                {'id': self.product04.id, 'name': self.product04.title},
+                {'id': self.product05.id, 'name': self.product05.title},
+            ]
+        }
+
+        self.assertEqual(response.json(), expected_data)
+
+class SubcribeTestCase(TestCase):
+
+    def setUp(self):
+        pass
+
+    def test_subcribe_fail_with_email_wrong(self):
+        
+        response = self.client.post('/subcribe', data={
+            'email': 'tien'
+        })
+
+        self.assertEqual(response.status_code, 400)
+        self.assertEqual(response.content.decode('utf-8'), 'Email wrong!')
 
 
         
